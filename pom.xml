@@ -3,6 +3,7 @@
   <groupId>net-util</groupId>
   <artifactId>net-util</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
   <name>Net Util</name>
   <build>
     <sourceDirectory>src</sourceDirectory>

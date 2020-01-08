@@ -3,6 +3,7 @@ package at.jojokobi.netutil.server;
 import java.io.Closeable;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetAddress;
 import java.util.List;
 
 public interface Server extends Closeable {
@@ -15,6 +16,8 @@ public interface Server extends Closeable {
 	public List<Long> getClients ();
 	
 	public boolean isClosed ();
+	
+	public InetAddress getHostAddress();
 	
 	public OutputStream getOutputStream (long clientClient);
 	

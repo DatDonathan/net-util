@@ -4,6 +4,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
@@ -120,6 +122,19 @@ public class TCPServer implements Server {
 		List<Long> newClients = new ArrayList<>(this.newClients);
 		this.newClients.clear();
 		return newClients;
+	}
+
+	@Override
+	public InetAddress getHostAddress() {
+		InetAddress address = null;
+		try (Socket socket = new Socket();) {
+			socket.connect(new InetSocketAddress("google.com", 80));
+			address = socket.getLocalAddress();
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		return address;
 	}
 
 //	@Override

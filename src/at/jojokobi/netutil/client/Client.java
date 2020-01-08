@@ -3,6 +3,7 @@ package at.jojokobi.netutil.client;
 import java.io.Closeable;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetAddress;
 
 public interface Client extends Closeable {
 	
@@ -23,6 +24,8 @@ public interface Client extends Closeable {
 	public long getClientId ();
 	
 	public void start ();
+	
+	public InetAddress getServerInetAddress();
 	
 	public void setController (ClientController controller);
 

@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -91,6 +92,11 @@ public class TCPClient implements Client {
 	@Override
 	public long getClientId() {
 		return clientId;
+	}
+
+	@Override
+	public InetAddress getServerInetAddress() {
+		return socket.getInetAddress();
 	}
 	
 }

@@ -50,7 +50,9 @@ public class TCPClient implements Client {
 	public synchronized void start() {
 		new Thread(() -> {
 			try {
-				controller.listenTo(new NonClosingInputStream(in));
+				if (controller != null) {
+					controller.listenTo(new NonClosingInputStream(in));
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

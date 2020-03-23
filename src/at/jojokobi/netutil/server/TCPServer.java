@@ -66,11 +66,15 @@ public class TCPServer implements Server {
 						}
 						clientSockets.put(id, instance);
 						newClients.add(id);
-						controller.onConnect(id, new NonClosingOutputStream(instance.getOutputStream()));
+						if (controller !=  null) {
+							controller.onConnect(id, new NonClosingOutputStream(instance.getOutputStream()));
+						}
 						//Listen Thread
 						new Thread (() -> {
 							try {
-								controller.listenTo(id, new NonClosingInputStream(instance.getInputStream()));
+								if (controller !=  null) {
+									controller.listenTo(id, new NonClosingInputStream(instance.getInputStream()));
+								}
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
